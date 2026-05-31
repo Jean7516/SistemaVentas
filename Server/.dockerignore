@@ -1,0 +1,7 @@
+target/
+.git/
+.gitignore
+CONTEXT.md
+*.md
+.env
+.dockerignore

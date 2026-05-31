@@ -1,0 +1,10 @@
+export { ComprasPage } from './components/ComprasPage';
+export { CompraFormPage } from './components/CompraFormPage';
+export { ProveedoresPage } from './components/ProveedoresPage';
+export { useCompras } from './hooks/useCompras';
+export { useCompra } from './hooks/useCompra';
+export { useCompraMutations } from './hooks/useCompraMutations';
+export { useProveedores } from './hooks/useProveedores';
+export { useProveedorMutations } from './hooks/useProveedorMutations';
+export { comprasService } from './services/compras.service';
+export type { CrearCompraRequest, ProveedorFormData } from './types/compra.types';

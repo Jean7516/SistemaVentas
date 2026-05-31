@@ -1,0 +1,16 @@
+spring:
+  jpa:
+    show-sql: false
+
+logging:
+  file:
+    path: /app/logs
+    name: /app/logs/bodega.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 30
+      total-size-cap: 500MB
+  level:
+    com.bodega: INFO
+    org.springframework: WARN
