@@ -48,14 +48,23 @@ export function useRegistrarMovimiento() {
 
   return useMutation({
     mutationFn: ({ turnoId, data }: { turnoId: number; data: RegistrarMovimientoRequest }) =>
-      cajaService.registrarMovimiento(turnoId, data),
+      cajaService.registrarMovimiento(turnoId, {
+        ...data,
+        descripcion: data.descripcion || undefined,
+      }),
     onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.caja.movimientos(variables.turnoId) });
       toast.success('Movimiento registrado exitosamente');
     },
     onError: (error: unknown) => {
       const apiError = error as ApiError;
-      toast.error(apiError.error?.mensaje || 'Error al registrar el movimiento');
+      const mensaje = apiError.error?.mensaje;
+      if (mensaje) {
+        toast.error(mensaje);
+      } else {
+        console.error('Error al registrar movimiento:', error);
+        toast.error('Error del servidor (500). Revisa la consola del backend.');
+      }
     },
   });
 }

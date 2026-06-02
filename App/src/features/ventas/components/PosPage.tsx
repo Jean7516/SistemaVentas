@@ -46,8 +46,8 @@ function QuantityModal({ producto, initialCantidad, onConfirm, onClose }: Quanti
           <Input
             ref={inputRef}
             type="number"
-            step={producto.unidadMedida.esFraccionable ? '0.001' : '1'}
-            min="0.001"
+            step={producto.unidadMedida.esFraccionable ? 'any' : '1'}
+            min={producto.unidadMedida.esFraccionable ? '0' : '1'}
             value={cantidad}
             onChange={(e) => setCantidad(Number(e.target.value))}
             onKeyDown={(e) => {

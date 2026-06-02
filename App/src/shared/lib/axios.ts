@@ -22,8 +22,29 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       useAuthStore.getState().logout();
       window.location.href = '/login';
+      return Promise.reject(error);
     }
-    return Promise.reject(error.response?.data as ApiError);
+
+    const res = error.response;
+    let apiError: ApiError;
+
+    if (res?.data && typeof res.data === 'object' && 'error' in res.data) {
+      apiError = res.data as ApiError;
+    } else {
+      const cuerpo = typeof res?.data === 'string' ? res.data.slice(0, 200) : JSON.stringify(res?.data ?? '');
+      apiError = {
+        success: false,
+        error: {
+          codigo: String(res?.status ?? 500),
+          mensaje: `Error del servidor (${res?.status ?? 500})`,
+          detalle: cuerpo,
+        },
+        timestamp: new Date().toISOString(),
+      };
+    }
+
+    console.error(`[API Error ${res?.status}]`, res?.config?.url, apiError);
+    return Promise.reject(apiError);
   },
 );
 
