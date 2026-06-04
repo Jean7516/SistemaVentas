@@ -96,7 +96,7 @@ export function VentaDetallePage() {
                 <tbody>
                   {venta.detalles.map((d) => (
                     <tr key={d.idDetalle} className="border-b last:border-0">
-                      <td className="py-2">{d.producto}</td>
+                      <td className="py-2">{d.producto.nombre}</td>
                       <td className="py-2">{formatearCantidad(d.cantidad, false)}</td>
                       <td className="py-2 text-right">{formatearSoles(d.precioHist)}</td>
                       <td className="py-2 text-right">{formatearSoles(d.descuento)}</td>
