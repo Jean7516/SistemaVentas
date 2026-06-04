@@ -46,11 +46,11 @@ Sistema integral para la gestión de ventas (POS), inventario, compras, control 
 
 ## Requisitos
 
-- Java 21+
-- Node.js 20+
 - PostgreSQL 15+
-- Docker + Docker Compose (opcional)
+- Java 21+
 - Maven 3.9+
+- Node.js 24+
+- Docker + Docker Compose (opcional)
 
 ## Inicio rápido
 
@@ -88,7 +88,6 @@ La app estará en `http://localhost:5173`.
 ### 4. Docker (todo junto)
 
 ```bash
-cd Server
 docker compose up -d
 ```
 
