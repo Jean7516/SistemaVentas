@@ -1,13 +1,10 @@
 .env
 Server/.env
-Server/CONTEXT.md
 App/.env
 App/.env.development
 App/.env.production
 App/node_modules/
 App/dist/
-App/.claude/
-App/CONTEXT.md
 target/
 
 *.log
